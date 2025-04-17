@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  password String
+  personnes Personne[]
+}
+
+model Personne {
+  id       Int       @id @default(autoincrement())
+  nom      String
+  prenom   String
+  profession   String
+  adresse    String
+  telephone      String
+  dateNaissance   String
+  user     User      @relation(fields: [userId], references: [id])
+  userId   Int
+  documents DocumentPersonne[]
+}
+
+model DocumentTemplate {
+  id       Int       @id @default(autoincrement())
+  content  String
+  variables Variable[]
+  documents Document[]
+}
+
+model Variable {
+  id            Int               @id @default(autoincrement())
+  name          String
+  template      DocumentTemplate  @relation(fields: [templateId], references: [id])
+  templateId    Int
+}
+
+model Document {
+  id            Int               @id @default(autoincrement())
+  fichier       String
+  typeDocument  String
+  date          DateTime
+  lieu          String
+  template      DocumentTemplate? @relation(fields: [templateId], references: [id])
+  templateId    Int?
+  personnes     DocumentPersonne[]
+}
+
+model DocumentPersonne {
+  id          Int       @id @default(autoincrement())
+  fonction    String
+  document    Document  @relation(fields: [documentId], references: [id])
+  documentId  Int
+  personne    Personne  @relation(fields: [personneId], references: [id])
+  personneId  Int
+}
