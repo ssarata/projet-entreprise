@@ -9,4 +9,7 @@ npx prisma init
 
 #lancer les migration apres avoir fini d'implementer les model
 npx prisma migrate dev --name init
-
+#installer express dans le projet pour la creation du serveur et et initialisation des routes
+npm install express
+#insta
+npm install nodemon
