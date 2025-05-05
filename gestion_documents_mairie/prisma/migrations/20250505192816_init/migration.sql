@@ -86,6 +86,12 @@ CREATE TABLE "Mairie" (
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "DocumentTemplate_typeDocument_key" ON "DocumentTemplate"("typeDocument");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Variable_nomVariable_key" ON "Variable"("nomVariable");
+
 -- AddForeignKey
 ALTER TABLE "User" ADD CONSTRAINT "User_id_fkey" FOREIGN KEY ("id") REFERENCES "Personne"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
