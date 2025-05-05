@@ -41,16 +41,23 @@ model Personne {
 model DocumentTemplate {
   id       Int       @id @default(autoincrement())
   content  String
-  typeDocument  String
-  variables Variable[]
-  documents Document[]///
+  typeDocument  String @unique
+  // variables Variable[]
+  documents Document[]//
+  documentTemplateVariables DocumentTemplateVariable[] // Added opposite relation field
 }
 //table Variable
 model Variable {
   id            Int               @id @default(autoincrement())
-  fonction          String
-  template      DocumentTemplate  @relation(fields: [templateId], references: [id])
-  templateId    Int
+  nomVariable String   @unique
+  documentTemplateVariables DocumentTemplateVariable[] 
+}
+model DocumentTemplateVariable {
+  id               Int               @id @default(autoincrement())
+  documentTemplate DocumentTemplate  @relation(fields: [documentTemplateId], references: [id])
+  documentTemplateId Int
+  variable          Variable         @relation(fields: [variableId], references: [id])
+  variableId        Int
 }
 
 //table Document
@@ -61,9 +68,11 @@ model Document {
   template      DocumentTemplate? @relation(fields: [templateId], references: [id])
   templateId    Int?
   personnes     DocumentPersonne[]
+  //personnes     Personne[]//un document peut contenir plusieurs personnes
   user     User      @relation(fields: [userId], references: [id])//un document est generer par un et un seul user
   userId   Int
 }
+
 
 model DocumentPersonne {
   id          Int       @id @default(autoincrement())
