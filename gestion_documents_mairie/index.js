@@ -1,7 +1,7 @@
 import express from 'express';
-import authRouter from "./src/routers/authRouter.js";
+import authRouter from "./src/Routes/authRouter.js";
 import authenticateToken from './src/middlewares/authMiddleware.js';
-import mairieRouter from './src/routers/mairieRouter.js';
+import mairieRouter from './src/Routes/mairieRouter.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 

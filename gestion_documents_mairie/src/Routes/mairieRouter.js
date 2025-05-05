@@ -6,7 +6,7 @@ import {
   getMairieById,
   updateMairie,
   deleteMairie,
-} from '../controllers/mairieController.js';
+} from '../Controllers/mairieController.js';
 
 const router = Router();
 
