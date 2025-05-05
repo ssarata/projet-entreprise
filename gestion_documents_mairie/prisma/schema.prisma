@@ -1,7 +1,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -49,7 +48,7 @@ model DocumentTemplate {
 //table Variable
 model Variable {
   id            Int               @id @default(autoincrement())
-  nomVariable          String
+  fonction          String
   template      DocumentTemplate  @relation(fields: [templateId], references: [id])
   templateId    Int
 }
