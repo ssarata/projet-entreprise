@@ -1,4 +1,4 @@
-import mairieService from '../services/mairieService.js';
+import mairieService from '../Services/mairieService.js';
 import fs from 'fs';
 import path from 'path';
 import prisma from '../prismaClient.js';
