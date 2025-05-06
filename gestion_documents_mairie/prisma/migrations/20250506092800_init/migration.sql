@@ -3,6 +3,7 @@ CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "mairieId" INTEGER,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -86,8 +87,17 @@ CREATE TABLE "Mairie" (
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "DocumentTemplate_typeDocument_key" ON "DocumentTemplate"("typeDocument");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Variable_nomVariable_key" ON "Variable"("nomVariable");
+
 -- AddForeignKey
 ALTER TABLE "User" ADD CONSTRAINT "User_id_fkey" FOREIGN KEY ("id") REFERENCES "Personne"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "User" ADD CONSTRAINT "User_mairieId_fkey" FOREIGN KEY ("mairieId") REFERENCES "Mairie"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "DocumentTemplateVariable" ADD CONSTRAINT "DocumentTemplateVariable_documentTemplateId_fkey" FOREIGN KEY ("documentTemplateId") REFERENCES "DocumentTemplate"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
