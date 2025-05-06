@@ -7,13 +7,14 @@ import {
   updateMairie,
   deleteMairie,
 } from '../Controllers/mairieController.js';
+import authenticateToken from '../middlewares/authMiddleware.js';
 
 const router = Router();
 
-router.post('/', upload.single('logo'), createMairie);
-router.put('/:id', upload.single('logo'), updateMairie); // ← Ajout du middleware ici
+router.post('/', authenticateToken,upload.single('logo'), createMairie);
+router.put('/:id',authenticateToken, upload.single('logo'), updateMairie); // ← Ajout du middleware ici
 router.get('/', getAllMairies);
 router.get('/:id', getMairieById);
-router.delete('/:id', deleteMairie);
+router.delete('/:id',authenticateToken, deleteMairie);
 
 export default router;

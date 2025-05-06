@@ -14,8 +14,10 @@ model User {
   id       Int       @id @default(autoincrement())
   email    String    @unique
   password String
-  personne  Personne @relation(fields: [id], references: [id])//user herite de personne
-  documents Document[]//un utlisateur peut generer plusieurs documents
+  personne Personne  @relation(fields: [id], references: [id]) // user hérite de personne
+  documents Document[] // un utilisateur peut générer plusieurs documents
+  mairieId Int?       // Relation optionnelle avec une mairie
+  mairie   Mairie?    @relation(fields: [mairieId], references: [id])
 }
 
 //table Personne
@@ -81,18 +83,22 @@ model DocumentPersonne {
   personneId  Int
 }
 
-model Mairie{
-id          Int       @id @default(autoincrement())
-ville    String
-commune    String
-logo    String
-region    String
-prefecture    String
-
-
-
-
-
-
+model Mairie {
+  id       Int    @id @default(autoincrement())
+  ville    String
+  commune  String
+  logo     String
+  region   String
+  prefecture String
+  users    User[] // Une mairie peut avoir plusieurs utilisateurs
 }
+
+
+
+
+
+
+
+
+
 
