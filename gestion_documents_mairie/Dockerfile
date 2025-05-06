@@ -21,4 +21,5 @@ COPY . .
 RUN npm install --only=development
 
 # 6. Commande de démarrage
+
 CMD ["npm", "run", "start:prod"]
