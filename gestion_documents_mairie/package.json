@@ -4,11 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "start:prod": "node index.js",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "test": "jest"
+    "start": "node index.js"
+    
   },
   "keywords": [],
   "author": "",
