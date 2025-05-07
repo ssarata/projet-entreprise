@@ -1,6 +1,6 @@
-const personneService = require('../services/personne.service');
+import * as personneService from '../Services/personne.service.js';
 
-exports.createPersonne = async (req, res) => {
+export const createPersonne = async (req, res) => {
   try {
     const personne = await personneService.createPersonne(req.body);
     res.status(201).json(personne);
@@ -9,7 +9,7 @@ exports.createPersonne = async (req, res) => {
   }
 };
 
-exports.getAllPersonnes = async (req, res) => {
+export const getAllPersonnes = async (req, res) => {
   try {
     const personnes = await personneService.getAllPersonnes();
     res.json(personnes);
@@ -18,7 +18,7 @@ exports.getAllPersonnes = async (req, res) => {
   }
 };
 
-exports.getPersonneById = async (req, res) => {
+export const getPersonneById = async (req, res) => {
   try {
     const personne = await personneService.getPersonneById(req.params.id);
     if (!personne) {
@@ -30,7 +30,7 @@ exports.getPersonneById = async (req, res) => {
   }
 };
 
-exports.updatePersonne = async (req, res) => {
+export const updatePersonne = async (req, res) => {
   try {
     const updatedPersonne = await personneService.updatePersonne(req.params.id, req.body);
     if (!updatedPersonne) {
@@ -42,7 +42,7 @@ exports.updatePersonne = async (req, res) => {
   }
 };
 
-exports.deletePersonne = async (req, res) => {
+export const deletePersonne = async (req, res) => {
   try {
     const deletedPersonne = await personneService.deletePersonne(req.params.id);
     if (!deletedPersonne) {

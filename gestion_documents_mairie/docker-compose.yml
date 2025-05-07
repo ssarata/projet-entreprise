@@ -11,14 +11,13 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
   api:
     build: .
     environment:
       DATABASE_URL: postgresql://dermane:fad@postgres:5432/entreprise?schema=public
       NODE_ENV: production
     ports:
-      - "3000:3000"
+      - "3001:3000"
     depends_on:
       - postgres
     restart: unless-stopped
