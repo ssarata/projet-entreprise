@@ -17,9 +17,10 @@ RUN npx prisma generate
 # 4. Copie du code source
 COPY . .
 
-# 5. Installation des dépendances de développement pour la construction (si nécessaire)
+# 5.Installation des dépendances de développement pour la construction (si nécessaire)
 RUN npm install --only=development
+RUN npm install -g nodemon
 
-# 6. Commande de démarrage
 
+# 6.Commande de démarrage
 CMD ["npm", "run", "start:prod"]

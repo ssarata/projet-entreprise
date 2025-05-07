@@ -4,7 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js",
+    "dev": "npx nodemon src/index.js",
+    "start:prod": "node src/index.js"
   },
   "keywords": [],
   "author": "",
