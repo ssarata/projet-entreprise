@@ -38,16 +38,26 @@ export  class DocumentController {
     }
 
     // Créer un nouveau document
-     async createDocument(req, res) {
+       // Créer un nouveau document
+    async createDocument(req, res) {
         try {
             const documentData = req.body;
-         //   documentData.date = new Date();
+
+            // Définir la date actuelle
+            documentData.date = new Date().toISOString();
+            console.log(req.user.userId);
+            
+            //Récupérer l'ID de l'utilisateur connecté
+            const userId = req.user.userId; // Assurez-vous que `req.user` est défini par un middleware d'authentification
+            if (!userId) {
+                return res.status(HTTP_500_INTERNAL_SERVER_ERROR).json({ error: "Utilisateur non authentifié" });
+            }
+            documentData.userId = userId;
+
             const newDocument = await this.documentService.addDocument(documentData);
             res.status(HTTP_201_CREATE).json(newDocument);
         } catch (error) {
             console.log(error);
-            
-
             res.status(HTTP_500_INTERNAL_SERVER_ERROR).json({ error: error.message });
         }
     }
