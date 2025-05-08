@@ -3,6 +3,10 @@ import authRouter from "./src/Routes/authRouter.js";
 import authenticateToken from './src/middlewares/authMiddleware.js';
 import mairieRouter from './src/Routes/mairieRouter.js';
 <<<<<<< HEAD
+import setupSwagger from './utils/swagger.js';
+
+=======
+<<<<<<< HEAD
 import personneRouter from './src/Routes/personne.route.js';
 =======
 import variableRoutes from './src/Routes/VariableRoute.js';
@@ -14,6 +18,7 @@ import documentPersonneRoutes from './src/Routes/DocumentPersonneRoute.js';
 //import personneRouter from './src/Routes/personne.route.js';
 
 >>>>>>> f06f7538a0a6352f1bb07dc1973dc6ae562c3fbe
+>>>>>>> 00c657790fcc2067507adcaf46b9dab580601f1e
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
@@ -25,7 +30,7 @@ const __dirname = path.dirname(__filename);
 
 
 const app = express();
-
+setupSwagger(app); // Configure Swagger
 // Middleware pour gérer les fichiers statiques
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -51,5 +56,7 @@ app.use('/auth', authRouter);
 const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Documentation Swagger disponible sur http://localhost:${PORT}/api-docs`);
+
 });
 

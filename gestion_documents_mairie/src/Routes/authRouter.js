@@ -26,3 +26,70 @@ router.post('/login', async (req, res) => {
 });
 
 export default router;
+/**
+ * @swagger
+ * tags:
+ *   name: Authentification
+ *   description: Gestion de l'authentification des utilisateurs
+ */
+
+/**
+ * @swagger
+ * /auth/register:
+ *   post:
+ *     summary: Inscription d'un nouvel utilisateur
+ *     tags: [Authentification]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nom:
+ *                 type: string
+ *               prenom:
+ *                  type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Utilisateur inscrit avec succès
+ *       400:
+ *         description: Erreur de validation
+ */
+
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Connexion d'un utilisateur
+ *     tags: [Authentification]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Connexion réussie
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                 user:
+ *                   type: object
+ *       401:
+ *         description: Identifiants invalides
+ */
