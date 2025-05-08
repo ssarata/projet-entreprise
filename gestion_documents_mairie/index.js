@@ -2,6 +2,8 @@ import express from 'express';
 import authRouter from "./src/Routes/authRouter.js";
 import authenticateToken from './src/middlewares/authMiddleware.js';
 import mairieRouter from './src/Routes/mairieRouter.js';
+import setupSwagger from './utils/swagger.js';
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 
 const app = express();
-
+setupSwagger(app); // Configure Swagger
 // Middleware pour gérer les fichiers statiques
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -28,4 +30,6 @@ app.use('/auth', authRouter);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Documentation Swagger disponible sur http://localhost:${PORT}/api-docs`);
+
 });
