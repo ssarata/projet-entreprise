@@ -1,13 +1,15 @@
 import express from 'express';
 import { DocumentPersonneController } from '../Controllers/DocumentPersonneController.js';
+import authenticateToken from '../middlewares/authMiddleware.js';
 
-const router = express.Router();
+const routes = express.Router();
 const controller = new DocumentPersonneController();
+routes.post('/',authenticateToken, controller.create.bind(controller));
+routes.get('/',authenticateToken, controller.findAll.bind(controller));
+routes.get('/:id', authenticateToken,controller.findById.bind(controller));
+routes.put('/:id',authenticateToken, controller.update.bind(controller));
+routes.delete('/:id',authenticateToken, controller.delete.bind(controller));
+// routes.get('/template/:templateId', controller.findByTemplate.bind(controller));
 
-router.post('/', (req, res) => controller.create(req, res));
-router.get('/', (req, res) => controller.findAll(req, res));
-router.get('/:id', (req, res) => controller.findById(req, res));
-router.put('/:id', (req, res) => controller.update(req, res));
-router.delete('/:id', (req, res) => controller.delete(req, res));
 
-export default router;
+export default routes;
