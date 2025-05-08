@@ -1,13 +1,20 @@
-import express from 'express';
-import * as personneController from '../Controllers/personne.controller.js';
-import * as personneMiddleware from '../middlewares/personne.middleware.js';
+import { Router } from 'express';
+import {
+    createPersonne,
+    getAllPersonnes,
+    getPersonneById,
+    updatePersonne,
+    deletePersonne,
+  } from '../Controllers/personne.controller.js';
+import authenticateToken from '../middlewares/authMiddleware.js';
 
-const router = express.Router();
+const router = Router();
 
-router.post('/', personneMiddleware.validatePersonneData, personneController.createPersonne);
-router.get('/', personneController.getAllPersonnes);
-router.get('/:id', personneController.getPersonneById);
-router.put('/:id', personneMiddleware.validatePersonneData, personneController.updatePersonne);
-router.delete('/:id', personneController.deletePersonne);
+// Routes pour la table Personne
+router.post('/', authenticateToken, createPersonne); // Créer une personne
+router.put('/:id', authenticateToken, updatePersonne); // Mettre à jour une personne
+router.get('/', getAllPersonnes); // Récupérer toutes les personnes
+router.get('/:id', getPersonneById); // Récupérer une personne par ID
+router.delete('/:id', authenticateToken, deletePersonne); // Supprimer une personne
 
 export default router;
