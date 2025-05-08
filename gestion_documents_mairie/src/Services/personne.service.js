@@ -1,32 +1,26 @@
-const { PrismaClient } = require('@prisma/client');
+import { PrismaClient } from '@prisma/client';
+
 const prisma = new PrismaClient();
 
-exports.createPersonne = async (personneData) => {
-  return await prisma.personne.create({
-    data: personneData
-  });
+export const createPersonne = async (personneData) => {
+  return await prisma.personne.create({ data: personneData });
 };
 
-exports.getAllPersonnes = async () => {
+export const getAllPersonnes = async () => {
   return await prisma.personne.findMany();
 };
 
-exports.getPersonneById = async (id) => {
-  return await prisma.personne.findUnique({
-    where: { id: parseInt(id) },
-    include: { documents: true }
-  });
+export const getPersonneById = async (id) => {
+  return await prisma.personne.findUnique({ where: { id: parseInt(id) } });
 };
 
-exports.updatePersonne = async (id, personneData) => {
+export const updatePersonne = async (id, personneData) => {
   return await prisma.personne.update({
     where: { id: parseInt(id) },
-    data: personneData
+    data: personneData,
   });
 };
 
-exports.deletePersonne = async (id) => {
-  return await prisma.personne.delete({
-    where: { id: parseInt(id) }
-  });
+export const deletePersonne = async (id) => {
+  return await prisma.personne.delete({ where: { id: parseInt(id) } });
 };

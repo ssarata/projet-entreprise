@@ -64,7 +64,7 @@ model DocumentTemplateVariable {
 //table Document
 model Document {
   id            Int               @id @default(autoincrement())
-  date          DateTime
+  date          String
   identiteDuMaire          String
   template      DocumentTemplate? @relation(fields: [templateId], references: [id])
   templateId    Int?
