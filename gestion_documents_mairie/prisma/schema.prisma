@@ -33,7 +33,6 @@ model Personne {
   numeroCni   String?
   sexe      String?
   lieuNaissance   String?
- // role    String?
   user     User?
   documents DocumentPersonne[]
 
@@ -65,12 +64,11 @@ model DocumentTemplateVariable {
 //table Document
 model Document {
   id            Int               @id @default(autoincrement())
-  date          DateTime
+  date          String
   identiteDuMaire          String
   template      DocumentTemplate? @relation(fields: [templateId], references: [id])
   templateId    Int?
   personnes     DocumentPersonne[]
-  //personnes     Personne[]//un document peut contenir plusieurs personnes
   user     User      @relation(fields: [userId], references: [id])//un document est generer par un et un seul user
   userId   Int
 }
