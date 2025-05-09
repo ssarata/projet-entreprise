@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { DocumentTemplateController } from '../Controllers/DocumentTemplateController.js';
+import { DocumentTemplateController } from '../Controllers/DocumentTemplate.controller.js';
 import authenticateToken from '../middlewares/authMiddleware.js';
 
 const routes = Router();

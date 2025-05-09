@@ -4,7 +4,7 @@ import {
     HTTP_201_CREATE,
     HTTP_500_INTERNAL_SERVER_ERROR
   } from "../Constantes/httpStatus.js";
-import DocumentTemplateService from "../Services/DocumentTemplateService.js";
+import DocumentTemplateService from "../Services/DocumentTemplate.service.js";
   import TemplateValidate from '../Validations/TemplateValidate.js';
 
   

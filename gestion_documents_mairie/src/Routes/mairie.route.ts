@@ -6,7 +6,7 @@ import {
   getMairieById,
   updateMairie,
   deleteMairie,
-} from '../Controllers/mairieController.js';
+} from '../Controllers/mairie.controller.js';
 import authenticateToken from '../middlewares/authMiddleware.js';
 
 const router = Router();
@@ -28,7 +28,7 @@ export default router;
 
 /**
  * @swagger
- * /mairies:
+ * /api/mairies:
  *   get:
  *     summary: Récupère toutes les mairies
  *     tags: [Mairies]
@@ -56,7 +56,7 @@ export default router;
 
 /**
  * @swagger
- * /mairies/{id}:
+ * /api/mairies/{id}:
  *   get:
  *     summary: Récupère une mairie par ID
  *     tags: [Mairies]

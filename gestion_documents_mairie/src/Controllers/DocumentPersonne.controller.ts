@@ -1,4 +1,4 @@
-import DocumentPersonneService from '../Services/DocumentPersonneService.js';
+import DocumentPersonneService from '../Services/DocumentPersonne.service.js';
 
 export class DocumentPersonneController {
   constructor() {

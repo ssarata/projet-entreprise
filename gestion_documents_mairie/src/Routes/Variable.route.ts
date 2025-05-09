@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { VariableController } from '../Controllers/VariableController.js';
+import { VariableController } from '../Controllers/Variable.controller.js';
 import authenticateToken from '../middlewares/authMiddleware.js';
 
 const routes = Router();

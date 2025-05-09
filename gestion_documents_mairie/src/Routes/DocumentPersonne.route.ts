@@ -1,5 +1,5 @@
 import express from 'express';
-import { DocumentPersonneController } from '../Controllers/DocumentPersonneController.js';
+import { DocumentPersonneController } from '../Controllers/DocumentPersonne.controller.js';
 import authenticateToken from '../middlewares/authMiddleware.js';
 
 const routes = express.Router();
