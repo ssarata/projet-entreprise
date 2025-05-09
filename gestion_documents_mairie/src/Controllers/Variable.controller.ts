@@ -1,5 +1,5 @@
 
-import  VariableService  from '../Services/VariableService.js';
+import  VariableService  from '../Services/Variable.service.js';
 import {
     HTTP_200_OK,
     HTTP_201_CREATE,

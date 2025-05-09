@@ -1,7 +1,8 @@
-import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerJsdoc, { Options } from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import { Application } from 'express';
 
-const options = {
+const options: Options = {
   definition: {
     openapi: '3.0.0',
     info: {
@@ -30,12 +31,16 @@ const options = {
       },
     ],
   },
-  apis: ['./src/Routes/*.js'], // Chemin vers vos fichiers de routes
+  apis: ['./src/Routes/*.ts'], // Chemin vers vos fichiers de routes
 };
 
 const swaggerSpec = swaggerJsdoc(options);
 
-const setupSwagger = (app) => {
+/**
+ * Configure Swagger pour l'application Express.
+ * @param app - Instance de l'application Express
+ */
+const setupSwagger = (app: Application): void => {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 };
 

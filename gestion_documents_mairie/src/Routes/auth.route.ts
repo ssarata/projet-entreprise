@@ -1,31 +1,8 @@
-import express from 'express';
-import authService from '../Services/authService.js';
+import express, { Request, Response } from 'express';
+import authService from '../Services/auth.service';
 
 const router = express.Router();
 
-// Route pour l'inscription
-router.post('/register', async (req, res) => {
-  try {
-    const { email, password, nom, prenom } = req.body;
-    const user = await authService.register(email, password, { nom, prenom });
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
-
-// Route pour la connexion
-router.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const { token, user } = await authService.login(email, password);
-    res.status(200).json({ token, user });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
-
-export default router;
 /**
  * @swagger
  * tags:
@@ -49,7 +26,7 @@ export default router;
  *               nom:
  *                 type: string
  *               prenom:
- *                  type: string
+ *                 type: string
  *               email:
  *                 type: string
  *               password:
@@ -60,6 +37,15 @@ export default router;
  *       400:
  *         description: Erreur de validation
  */
+router.post('/register', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { email, password, nom, prenom } = req.body;
+    const user = await authService.register(email, password, { nom, prenom });
+    res.status(201).json(user);
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 /**
  * @swagger
@@ -93,3 +79,18 @@ export default router;
  *       401:
  *         description: Identifiants invalides
  */
+router.post('/login', async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { email, password } = req.body;
+    const { token, user } = await authService.login(email, password);
+    if (!token) {
+      res.status(401).json({ message: 'Identifiants invalides' });
+    } else {
+      res.status(200).json({ token, user });
+    }
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+export default router;
