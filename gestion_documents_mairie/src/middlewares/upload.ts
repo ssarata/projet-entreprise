@@ -1,5 +1,4 @@
-// src/middlewares/upload.js
-import multer from 'multer';
+import multer, { StorageEngine } from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
@@ -13,7 +12,7 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-const storage = multer.diskStorage({
+const storage: StorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadDir);
   },
