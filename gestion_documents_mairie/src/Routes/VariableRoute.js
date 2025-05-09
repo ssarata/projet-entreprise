@@ -23,10 +23,12 @@ export default routes;
 
 /**
  * @swagger
- * /variables:
+ * /api/variables:
  *   post:
  *     summary: Crée une nouvelle variable
  *     tags: [Variables]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -45,10 +47,12 @@ export default routes;
 
 /**
  * @swagger
- * /variables:
+ * /api/variables:
  *   get:
  *     summary: Récupère toutes les variables
  *     tags: [Variables]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Liste des variables
@@ -67,10 +71,12 @@ export default routes;
 
 /**
  * @swagger
- * /variables/{id}:
+ * /api/variables/{id}:
  *   get:
  *     summary: Récupère une variable par ID
  *     tags: [Variables]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -87,10 +93,12 @@ export default routes;
 
 /**
  * @swagger
- * /variables/{id}:
+ * /api/variables/{id}:
  *   put:
  *     summary: Met à jour une variable
  *     tags: [Variables]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -116,10 +124,12 @@ export default routes;
 
 /**
  * @swagger
- * /variables/{id}:
+ * /api/variables/{id}:
  *   delete:
  *     summary: Supprime une variable
  *     tags: [Variables]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

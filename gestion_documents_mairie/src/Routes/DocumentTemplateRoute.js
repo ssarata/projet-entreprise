@@ -23,10 +23,12 @@ export default routes;
 
 /**
  * @swagger
- * /document-templates:
+ * /api/document-templates:
  *   post:
  *     summary: Crée un nouveau modèle de document
  *     tags: [DocumentTemplates]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -47,36 +49,12 @@ export default routes;
 
 /**
  * @swagger
- * /document-templates/{variableId}/{documentTemplateId}:
- *   post:
- *     summary: Associe une variable à un modèle de document
- *     tags: [DocumentTemplates]
- *     parameters:
- *       - in: path
- *         name: variableId
- *         schema:
- *           type: integer
- *         required: true
- *         description: ID de la variable
- *       - in: path
- *         name: documentTemplateId
- *         schema:
- *           type: integer
- *         required: true
- *         description: ID du modèle de document
- *     responses:
- *       201:
- *         description: Association créée avec succès
- *       400:
- *         description: Erreur de validation
- */
-
-/**
- * @swagger
- * /document-templates:
+ * /api/document-templates:
  *   get:
  *     summary: Récupère tous les modèles de documents
  *     tags: [DocumentTemplates]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Liste des modèles de documents
@@ -97,10 +75,12 @@ export default routes;
 
 /**
  * @swagger
- * /document-templates/{id}:
+ * /api/document-templates/{id}:
  *   get:
  *     summary: Récupère un modèle de document par ID
  *     tags: [DocumentTemplates]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -117,10 +97,12 @@ export default routes;
 
 /**
  * @swagger
- * /document-templates/{id}:
+ * /api/document-templates/{id}:
  *   put:
  *     summary: Met à jour un modèle de document
  *     tags: [DocumentTemplates]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -148,10 +130,12 @@ export default routes;
 
 /**
  * @swagger
- * /document-templates/{id}:
+ * /api/document-templates/{id}:
  *   delete:
  *     summary: Supprime un modèle de document
  *     tags: [DocumentTemplates]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

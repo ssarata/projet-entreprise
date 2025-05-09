@@ -91,10 +91,12 @@ export default router;
 
 /**
  * @swagger
- * /mairies:
+ * /api/mairies:
  *   post:
  *     summary: Crée une nouvelle mairie
  *     tags: [Mairies]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -118,14 +120,18 @@ export default router;
  *         description: Mairie créée avec succès
  *       400:
  *         description: Erreur de validation
+ *       401:
+ *         description: Non autorisé (token manquant ou invalide)
  */
 
 /**
  * @swagger
- * /mairies/{id}:
+ * /api/mairies/{id}:
  *   put:
  *     summary: Met à jour une mairie
  *     tags: [Mairies]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -154,16 +160,20 @@ export default router;
  *     responses:
  *       200:
  *         description: Mairie mise à jour avec succès
+ *       401:
+ *         description: Non autorisé (token manquant ou invalide)
  *       404:
  *         description: Mairie non trouvée
  */
 
 /**
  * @swagger
- * /mairies/{id}:
+ * /api/mairies/{id}:
  *   delete:
  *     summary: Supprime une mairie
  *     tags: [Mairies]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -174,6 +184,8 @@ export default router;
  *     responses:
  *       204:
  *         description: Mairie supprimée avec succès
+ *       401:
+ *         description: Non autorisé (token manquant ou invalide)
  *       404:
  *         description: Mairie non trouvée
  */

@@ -12,3 +12,142 @@ routes.put('/:id',authenticateToken, controller.updateDocument.bind(controller))
 routes.delete('/:id', authenticateToken,controller.deleteDocument.bind(controller));
 
 export default routes;
+
+/**
+ * @swagger
+ * tags:
+ *   name: Documents
+ *   description: Gestion des documents
+ */
+
+/**
+ * @swagger
+ * /api/documents:
+ *   post:
+ *     summary: Crée un nouveau document
+ *     tags: [Documents]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               date:
+ *                 type: string
+ *                 format: date-time
+ *               identiteDuMaire:
+ *                 type: string
+ *               templateId:
+ *                 type: integer
+ *               userId:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Document créé avec succès
+ *       400:
+ *         description: Erreur de validation
+ */
+
+/**
+ * @swagger
+ * /api/documents:
+ *   get:
+ *     summary: Récupère tous les documents
+ *     tags: [Documents]
+ *     responses:
+ *       200:
+ *         description: Liste des documents
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                   date:
+ *                     type: string
+ *                     format: date-time
+ *                   identiteDuMaire:
+ *                     type: string
+ *                   templateId:
+ *                     type: integer
+ *                   userId:
+ *                     type: integer
+ */
+
+/**
+ * @swagger
+ * /api/documents/{id}:
+ *   get:
+ *     summary: Récupère un document par ID
+ *     tags: [Documents]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID du document
+ *     responses:
+ *       200:
+ *         description: Détails du document
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                 date:
+ *                   type: string
+ *                   format: date-time
+ *                 identiteDuMaire:
+ *                   type: string
+ *                 templateId:
+ *                   type: integer
+ *                 userId:
+ *                   type: integer
+ *       404:
+ *         description: Document non trouvé
+ */
+
+/**
+ * @swagger
+ * /api/documents/{id}:
+ *   put:
+ *     summary: Met à jour un document
+ *     tags: [Documents]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID du document
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               date:
+ *                 type: string
+ *                 format: date-time
+ *               identiteDuMaire:
+ *                 type: string
+ *               templateId:
+ *                 type: integer
+ *               userId:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: Document mis à jour avec succès
+ *       404:
+ *         description: Document non trouvé
+ */
